@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WB",
+        "BW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:white_concrete"
+        },
+        "B": {
+            "item": "minecraft:black_concrete"
+        }
+    },
+    "result": {
+        "item": "andermod:floor_tiles",
+        "count": 4
+    }
+}

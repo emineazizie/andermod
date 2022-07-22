@@ -1,0 +1,6 @@
+{
+	"parent": "andermod:block/doorbell",
+	"textures": {
+		"all": "block/oak_planks"
+	}
+}

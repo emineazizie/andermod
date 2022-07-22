@@ -1,0 +1,21 @@
+{
+  "doorbell": {
+    "subtitle": "subtitles.andermod.doorbell",
+    "sounds": [
+      {
+        "name": "andermod:doorbell",
+        "attenuation_distance": 32,
+        "volume": 0.5
+      }
+    ]
+  },
+  "item.armor.equip_apron": {
+    "subtitle": "subtitles.andermod.item.armor.equip_apron",
+    "sounds": [
+      {
+        "name": "minecraft:item.armor.equip_leather",
+        "type": "event"
+      }
+    ]
+  }
+}

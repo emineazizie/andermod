@@ -1,0 +1,15 @@
+{
+    "itemGroup.andermod.general": "AnderMod",
+    "block.andermod.floor_tiles": "Floor Tiles",
+    "block.andermod.doorbell": "Doorbell",
+    "item.andermod.one_dollar": "One Dollar",
+    "item.andermod.apron": "Apron",
+    "subtitles.andermod.doorbell": "Doorbell rings",
+    "subtitles.andermod.item.armor.equip_apron": "Apron rustles",
+    "block.andermod.oak_doorbell": "Oak Doorbell",
+    "block.andermod.spruce_doorbell": "Spruce Doorbell",
+    "block.andermod.birch_doorbell": "Birch Doorbell",
+    "block.andermod.jungle_doorbell": "Jungle Doorbell",
+    "block.andermod.acacia_doorbell": "Acacia Doorbell",
+    "block.andermod.dark_oak_doorbell": "Dark Oak Doorbell"
+}
