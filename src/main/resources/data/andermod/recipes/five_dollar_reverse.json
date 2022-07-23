@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "andermod:five_dollar"
+        }
+    ],
+    "result": {
+        "item": "andermod:one_dollar",
+        "count": 5
+    }
+}

@@ -57,7 +57,13 @@ public class AnderMod implements ModInitializer {
             FabricBlockSettings.of(Material.WOOD).strength(0.5f).nonOpaque());
 
     // Currency Items
+    public static final Item PENNY_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
     public static final Item ONE_DOLLAR_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
+    public static final Item FIVE_DOLLAR_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
+    public static final Item TEN_DOLLAR_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
+    public static final Item TWENTY_DOLLAR_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
+    public static final Item FIFTY_DOLLAR_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
+    public static final Item HUNDRED_DOLLAR_ITEM = new Item(new FabricItemSettings().group(AnderMod.ITEM_GROUP));
 
     @Override
     public void onInitialize() {
@@ -94,6 +100,12 @@ public class AnderMod implements ModInitializer {
                 new BlockItem(FLOOR_TILES_BLOCK, new FabricItemSettings().group(AnderMod.ITEM_GROUP)));
 
         // Currency Items
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "penny"), PENNY_ITEM);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "one_dollar"), ONE_DOLLAR_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "five_dollar"), FIVE_DOLLAR_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "ten_dollar"), TEN_DOLLAR_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "twenty_dollar"), TWENTY_DOLLAR_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "fifty_dollar"), FIFTY_DOLLAR_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "hundred_dollar"), HUNDRED_DOLLAR_ITEM);
     }
 }
