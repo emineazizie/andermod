@@ -1,6 +1,9 @@
+import com.modrinth.minotaur.dependencies.ModDependency
+
 plugins {
 	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -16,6 +19,22 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+}
+
+modrinth {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    System.out.println("Enter a Modrinth token: ");
+	token = br.readLine();
+    // token = 'mySecretToken' // Please use an environment variable for this! The default is `$MODRINTH_TOKEN`.
+    projectId = 'JcqhqihX' // The ID of your Modrinth project. Slugs will not work.
+    // versionNumber = '1.0.0' // The (preferably SemVer) version of the mod. If not specified, it'll use the `version` declaration
+    // versionName = 'My awesome release' // The version title. If not specified, it'll use the version number
+    uploadFile = remapJar // Tells Minotaur to use the remapped jar
+    gameVersions = ['1.19'] // An array of game versions the version supports
+    loaders = ['fabric'] // Self-explanatory.
+    dependencies = [
+            new ModDependency('P7dR8mSH', 'required') // Creates a new required dependency on Fabric API
+    ]
 }
 
 dependencies {

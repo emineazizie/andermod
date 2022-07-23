@@ -1,9 +1,10 @@
-# Fabric Example Mod
+# AnderMod
 
-## Setup
+This mod adds some fun items for playing multiplayer. It was created for me and my siblings, but maybe someone else can enjoy it too!
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Features
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+ - Doorbells
+ - Wearable apron
+ - Checkered tiles block
+ - Cash items
