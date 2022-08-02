@@ -1,0 +1,6 @@
+{
+	"parent": "andermod:block/doorbell_pressed",
+	"textures": {
+		"all": "block/jungle_planks"
+	}
+}

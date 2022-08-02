@@ -1,8 +1,12 @@
 {
-    "variants": {
-      "facing=north": { "model": "andermod:block/oak_doorbell", "uvlock": true },
-      "facing=east":  { "model": "andermod:block/oak_doorbell", "y":  90, "uvlock": true },
-      "facing=south": { "model": "andermod:block/oak_doorbell", "y": 180, "uvlock": true },
-      "facing=west":  { "model": "andermod:block/oak_doorbell", "y": 270, "uvlock": true }
-    }
+  "variants": {
+    "facing=north,powered=false": { "model": "andermod:block/oak_doorbell", "uvlock": true },
+    "facing=east,powered=false":  { "model": "andermod:block/oak_doorbell", "y":  90, "uvlock": true },
+    "facing=south,powered=false": { "model": "andermod:block/oak_doorbell", "y": 180, "uvlock": true },
+    "facing=west,powered=false":  { "model": "andermod:block/oak_doorbell", "y": 270, "uvlock": true },
+    "facing=north,powered=true": { "model": "andermod:block/pressed_oak_doorbell", "uvlock": true },
+    "facing=east,powered=true":  { "model": "andermod:block/pressed_oak_doorbell", "y":  90, "uvlock": true },
+    "facing=south,powered=true": { "model": "andermod:block/pressed_oak_doorbell", "y": 180, "uvlock": true },
+    "facing=west,powered=true":  { "model": "andermod:block/pressed_oak_doorbell", "y": 270, "uvlock": true }
   }
+}

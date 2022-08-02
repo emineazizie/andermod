@@ -8,8 +8,10 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -17,24 +19,28 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 // TODO: pressed state
 public class DoorbellBlock extends HorizontalFacingBlock {
     public static final EnumProperty<WallMountLocation> FACE = Properties.WALL_MOUNT_LOCATION;
+    public static final BooleanProperty POWERED = BooleanProperty.of("powered");
 
     public DoorbellBlock(Settings settings) {
         super(settings);
+        // this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(POWERED, false)).with(FACE, WallMountLocation.WALL));
         this.setDefaultState((BlockState) ((BlockState) ((BlockState) ((BlockState) this.stateManager.getDefaultState())
-                .with(FACING, Direction.NORTH))).with(FACE, WallMountLocation.WALL));
+                .with(FACING, Direction.NORTH))).with(FACE, WallMountLocation.WALL).with(POWERED, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACE, FACING);
+        builder.add(FACE, FACING, POWERED);
     }
 
     @Override
@@ -79,10 +85,28 @@ public class DoorbellBlock extends HorizontalFacingBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos blockPos, PlayerEntity player, Hand hand,
             BlockHitResult hit) {
+        if (state.get(POWERED).booleanValue()) {
+            return ActionResult.CONSUME;
+        }
+        this.powerOn(state, world, blockPos);
         if (!world.isClient) {
             world.playSound(null, blockPos, AnderMod.DOORBELL_EVENT, SoundCategory.BLOCKS, 1f, 1f);
         }
 
         return ActionResult.SUCCESS;
+    }
+
+    public void powerOn(BlockState state, World world, BlockPos pos) {
+        world.setBlockState(pos, (BlockState)state.with(POWERED, true));
+        world.createAndScheduleBlockTick(pos, this, 20);
+    }
+
+    @Override
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!state.get(POWERED).booleanValue()) {
+            return;
+        }
+        world.setBlockState(pos, (BlockState)state.with(POWERED, false));
+        world.emitGameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
     }
 }
