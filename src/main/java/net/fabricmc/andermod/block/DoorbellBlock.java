@@ -26,14 +26,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-// TODO: pressed state
 public class DoorbellBlock extends HorizontalFacingBlock {
     public static final EnumProperty<WallMountLocation> FACE = Properties.WALL_MOUNT_LOCATION;
     public static final BooleanProperty POWERED = BooleanProperty.of("powered");
 
     public DoorbellBlock(Settings settings) {
         super(settings);
-        // this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(POWERED, false)).with(FACE, WallMountLocation.WALL));
         this.setDefaultState((BlockState) ((BlockState) ((BlockState) ((BlockState) this.stateManager.getDefaultState())
                 .with(FACING, Direction.NORTH))).with(FACE, WallMountLocation.WALL).with(POWERED, false));
     }
@@ -97,7 +95,7 @@ public class DoorbellBlock extends HorizontalFacingBlock {
     }
 
     public void powerOn(BlockState state, World world, BlockPos pos) {
-        world.setBlockState(pos, (BlockState)state.with(POWERED, true));
+        world.setBlockState(pos, (BlockState) state.with(POWERED, true));
         world.createAndScheduleBlockTick(pos, this, 20);
     }
 
@@ -106,7 +104,7 @@ public class DoorbellBlock extends HorizontalFacingBlock {
         if (!state.get(POWERED).booleanValue()) {
             return;
         }
-        world.setBlockState(pos, (BlockState)state.with(POWERED, false));
+        world.setBlockState(pos, (BlockState) state.with(POWERED, false));
         world.emitGameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
     }
 }
